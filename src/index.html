@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./../node_modules/vue/dist/vue.js"></script>
+    <script src="./../dist/vue-msgbox-micro.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="showSuccess">showSuccess</button>
+    <button @click="showFailure">showFailure</button>
+    <button @click="showAlert">showAlert</button>
+    <button @click="showConfirm">showConfirm</button>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            showSuccess: function () {
+                this.$msgbox.showSuccess('提交成功');
+            },
+            showFailure: function () {
+                this.$msgbox.showFailure('提交失败', function () {
+                    console.log('这是提交失败的回调');
+                });
+            },
+            showAlert: function () {
+                this.$msgbox.showAlert('请输入密码');
+            },
+            showConfirm: function () {
+                this.$msgbox.showConfirm('确定要离开?', function () {
+                    console.log('这是确定的回调');
+                }, function () {
+                    console.log('这是取消的回调');
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>
